@@ -63,7 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:gravity="center"
-                android:text="Lorem ipsum dolor sit amet consectetur adipisicing"></TextView>
+                android:text="The Legian adalah salah satu penginapan mewah yang terletak di Pantai Seminyak. Terbilang mewah karena The Legian memiliki infinity pool tiga tingkat yang sangat menakjubkan dengan view langsung menghadap ke indahnya pantai.
+
+Tak cuma itu, hotel ini juga memiliki akses langsung ke pantai, lho. Menginap di The Legian, Bali, kamu bisa puas bermain di pantai atau sekedar bersantai menikmati indahnya ombak di dek kayu yang disediakan hotel ini."></TextView>
         </LinearLayout>
     </ScrollView>
     <Button
