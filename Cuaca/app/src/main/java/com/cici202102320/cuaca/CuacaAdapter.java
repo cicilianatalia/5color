@@ -1,5 +1,7 @@
 package com.cici202102320.cuaca;
 
+import static com.loopj.android.http.AsyncHttpClient.log;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class CuacaAdapter extends RecyclerView.Adapter<CuacaViewHolder> {
@@ -114,12 +120,35 @@ public class CuacaAdapter extends RecyclerView.Adapter<CuacaViewHolder> {
     @Override
     public int getItemCount()
     {
-        return (ListModelList != null) ? listModelList.size() : 0;
+        return (listModelList !=null) ? listModelList.size() :0;
     }
 
     private String formatWib(String tanggalWaktugmt_string) {
         Log.d("tw", "Waktu GMT : " + tanggalWaktugmt_string);
 
-        Da
+        Date tanggalWaktuGmt = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        try {
+            tanggalWaktuGmt = sdf.parse(tanggalWaktugmt_string);
+        }
+        catch (ParseException e)
+        {
+           log.e("*tw", e.getMessage());
+        }
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTime(tanggalWaktuGmt);
+        calendar.add(Calendar.HOUR_OF_DAY, 7);
+
+        Date tanggalWaktuWib = calendar.getTime();
+
+        String tanggalwaktuWib_string = sdf.format(tanggalWaktuWib);
+        tanggalwaktuWib_string = tanggalwaktuWib_string.replace("00:00", "00 WIB");
+
+        Log.d("*tw*", "Tanggal Waktu Indonesia Barat : " + tanggalwaktuWib_string);
+
+        return tanggalwaktuWib_string;
     }
 }
