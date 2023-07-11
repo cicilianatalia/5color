@@ -16,9 +16,9 @@ import cz.msebera.android.httpclient.Header;
 
 public class MenuActivity extends AppCompatActivity 
 {
-    private Button _tampilMahasiswaButton;
+    private Button _tampilMahasiswaButton, _tampilForexButton;
     
-    private Intent _tampilMahasiswaIntent;
+    private Intent _tampilMahasiswaIntent, _tampilForexIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,10 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
         
         initTampilMahasiswaButton();
+        initTampilButton();
     }
+
+
 
     private void initTampilMahasiswaButton() {
         _tampilMahasiswaButton = (Button) findViewById(R.id.tampilMahasiswaButton);
@@ -36,6 +39,17 @@ public class MenuActivity extends AppCompatActivity
             public void onClick(View view) {
                 _tampilMahasiswaIntent = new Intent(getApplicationContext(), TampilMahasiswaActivity.class);
                 startActivity(_tampilMahasiswaIntent);
+            }
+        });
+    }
+    private void initTampilButton() {
+        _tampilForexButton =(Button) findViewById(R.id.tampilForexButton);
+
+        _tampilForexButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                _tampilForexIntent = new Intent(getApplicationContext(),ForexMainActivity.class);
+                startActivity(_tampilForexIntent);
             }
         });
     }
